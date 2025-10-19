@@ -10,14 +10,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { 
   ArrowLeft, 
   Package, 
-  Phone, 
-  MapPin, 
   FileText, 
   Calendar, 
   Search,
   Download,
   Trash2,
-  RefreshCcw
+  RefreshCcw,
+  Hash
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
@@ -103,14 +102,13 @@ const Orders = () => {
       return;
     }
 
-    const headers = ["ID", "Ngày đặt", "Tên khách hàng", "SĐT", "Sản phẩm", "Địa chỉ", "Ghi chú"];
+    const headers = ["ID", "Ngày đặt", "Tên khách hàng", "Sản phẩm", "Số may mắn", "Ghi chú"];
     const csvData = filteredOrders.map(order => [
       order.id.slice(0, 8),
       format(new Date(order.created_at), "dd/MM/yyyy HH:mm", { locale: vi }),
       order.customer_name,
-      order.phone_number,
       order.selected_product,
-      order.shipping_address,
+      order.number || "-",
       order.notes || ""
     ]);
 
@@ -139,8 +137,8 @@ const Orders = () => {
   const filteredOrders = orders?.filter(
     (order) =>
       order.customer_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.phone_number.includes(searchQuery) ||
-      order.selected_product.toLowerCase().includes(searchQuery.toLowerCase())
+      order.selected_product.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (order.number && order.number.toString().includes(searchQuery))
   );
 
   return (
@@ -190,7 +188,7 @@ const Orders = () => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
               type="text"
-              placeholder="Tìm theo tên, SĐT hoặc sản phẩm..."
+              placeholder="Tìm theo tên, sản phẩm hoặc số may mắn..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
@@ -347,25 +345,17 @@ const Orders = () => {
                     </p>
                   </div>
 
-                  {/* Contact Info */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div className="flex items-start gap-2">
-                      <Phone className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="text-xs text-gray-500">Số điện thoại</p>
-                        <p className="text-sm font-medium">{order.phone_number}</p>
+                  {/* Số may mắn */}
+                  {order.number && (
+                    <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border-2 border-orange-200">
+                      <Hash className="h-5 w-5 text-orange-600" />
+                      <div className="flex-1">
+                        <p className="text-xs text-gray-600 mb-1">Số may mắn</p>
+                        <p className="text-2xl font-bold text-orange-600">{order.number}</p>
                       </div>
+                      <Badge className="bg-orange-600 text-white">Nữ</Badge>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <MapPin className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
-                      <div>
-                        <p className="text-xs text-gray-500">Địa chỉ giao hàng</p>
-                        <p className="text-sm font-medium">
-                          {order.shipping_address}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  )}
 
                   {/* Notes */}
                   {order.notes && (
