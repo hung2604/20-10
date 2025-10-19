@@ -1,0 +1,63 @@
+[
+  { "name": "Vũ Đức Việt", "gender": "Nam" },
+  { 
+    "name": "Bui Thị Mai Anh", 
+    "gender": "Nữ",
+    "nickname": "Mai Anh xinh đẹp",
+    "wish": "Chúc Mai Anh xinh đẹp 20-10 tràn ngập niềm vui, luôn rạng rỡ và thành công trong mọi lĩnh vực. Chúc bạn luôn tươi trẻ, xinh tươi và gặt hái nhiều thành tựu trong cuộc sống! 💐"
+  },
+  { "name": "Dương Minh Trí", "gender": "Nam" },
+  { 
+    "name": "Đỗ Thị Thu Hoài", 
+    "gender": "Nữ",
+    "nickname": "Hoài xinh gái",
+    "wish": "Chúc Hoài xinh gái 20-10 thật vui vẻ và hạnh phúc, thật nhiều tiền và luôn tỏa sáng. Mong bạn luôn giữ được nụ cười tươi tắn và đạt được mọi ước mơ trong cuộc sống! 🌸"
+  },
+  { "name": "Hoàng Trung Kiên", "gender": "Nam" },
+  { 
+    "name": "Lê Thị Kim Dung", 
+    "gender": "Nữ",
+    "nickname": "Kim Dung dễ thương",
+    "wish": "Chúc Kim Dung dễ thương 20-10 tràn đầy năng lượng tích cực, luôn khỏe mạnh và hạnh phúc. Chúc bạn thành công rực rỡ trong sự nghiệp và tình yêu luôn ngọt ngào bên người thương! 🌺"
+  },
+  { 
+    "name": "Ngô Thị Lan Anh", 
+    "gender": "Nữ",
+    "nickname": "Lan Anh dịu dàng",
+    "wish": "Chúc Lan Anh dịu dàng 20-10 luôn tươi trẻ, xinh đẹp và tỏa sáng như chính cái tên của mình. Mong bạn luôn gặp nhiều may mắn, thành công trong công việc và hạnh phúc trong cuộc sống! 🌹"
+  },
+  { 
+    "name": "Nguyễn Thị Linh", 
+    "gender": "Nữ",
+    "nickname": "Linh xinh đẹp",
+    "wish": "Chúc Linh xinh đẹp 20-10 tràn đầy năng lượng tích cực, luôn khỏe mạnh và hạnh phúc. Chúc bạn thành công rực rỡ trong sự nghiệp và tình yêu luôn ngọt ngào bên người thương! 🌹"
+  },
+  { 
+    "name": "Nguyễn Thị Thu Trang", 
+    "gender": "Nữ",
+    "nickname": "Thu Trang duyên dáng",
+    "wish": "Chúc Thu Trang duyên dáng 20-10 luôn tươi cười, hạnh phúc và thành đạt. Chúc bạn sức khỏe dồi dào, gặp nhiều điều tốt lành và ngày càng xinh đẹp hơn nữa! 🌷"
+  },
+  { "name": "Nguyễn Văn Thái", "gender": "Nam" },
+  { "name": "Phạm Huy Hoàng", "gender": "Nam" },
+  { "name": "Phạm Tiến Đạt", "gender": "Nam" },
+  { "name": "Nguyễn Hoài Nam", "gender": "Nam" },
+  { "name": "Nguyễn Bá Quý", "gender": "Nam" },
+  { "name": "Nguyễn Đình Thái", "gender": "Nam" },
+  { "name": "Lê Thế Hùng", "gender": "Nam" },
+  { "name": "Hoàng Văn Cương", "gender": "Nam" },
+  { 
+    "name": "Trần Thanh Huyền", 
+    "gender": "Nữ",
+    "nickname": "Thanh Huyền quyến rũ",
+    "wish": "Chúc Thanh Huyền quyến rũ 20-10 luôn tràn đầy sức sống, xinh đẹp và đầy thu hút. Chúc bạn thành công vang dội, tình duyên viên mãn và luôn là nguồn cảm hứng cho mọi người xung quanh! 💝"
+  },
+  { "name": "Nguyễn Trường Bình", "gender": "Nam" },
+  { 
+    "name": "Nguyễn Thị Anh Đào", 
+    "gender": "Nữ",
+    "nickname": "Anh Đào đáng yêu",
+    "wish": "Chúc Anh Đào đáng yêu 20-10 tươi như hoa đào nở rộ, luôn rạng rỡ và hạnh phúc. Mong bạn luôn giữ được sự đáng yêu, gặp nhiều điều may mắn và thành công trong mọi việc! 🌼"
+  }
+]
+

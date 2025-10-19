@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 20 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 15%;
+
+    --primary: 4 80% 85%;
+    --primary-foreground: 20 15% 15%;
+
+    --secondary: 25 40% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 20 10% 50%;
+
+    --accent: 4 80% 85%;
+    --accent-foreground: 20 15% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 4 80% 75%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 20 15% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 20 15% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 20 15% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 4 80% 85%;
+    --primary-foreground: 20 15% 15%;
+
+    --secondary: 25 40% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 20 15% 20%;
+    --muted-foreground: 20 10% 65%;
+
+    --accent: 4 80% 85%;
+    --accent-foreground: 20 15% 15%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 15% 25%;
+    --input: 20 15% 25%;
+    --ring: 4 80% 75%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  body::-webkit-scrollbar {
+    width: 3px;
+    height: 8px;
+  }
+  body::-webkit-scrollbar-thumb {
+    @apply bg-muted;
+    border-radius: 4px;
+  }
+  body::-webkit-scrollbar-track {
+    @apply bg-background;
+    border-radius: 4px;
+  }
+}
