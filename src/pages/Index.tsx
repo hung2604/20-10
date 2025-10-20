@@ -94,7 +94,7 @@ const Index = () => {
 
       <header className="bg-primary py-6 px-6 text-center">
         <h1 className="text-2xl font-serif italic text-primary-foreground">
-          20-10 . Gift store . Ania.99
+          20-10 . Gift store . BDZ Men
         </h1>
       </header>
       
