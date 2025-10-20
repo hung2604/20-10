@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { menuData } from "@/data/menuData";
 import { 
   ArrowLeft, 
   Package, 
@@ -41,6 +43,7 @@ const Orders = () => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedStore, setSelectedStore] = useState<string>("all");
 
   // Fetch orders từ Supabase
   const { data: orders, isLoading, error, refetch } = useQuery({
@@ -133,13 +136,24 @@ const Orders = () => {
     });
   };
 
-  // Filter orders theo search query
-  const filteredOrders = orders?.filter(
-    (order) =>
+  // Lấy danh sách tên quán duy nhất
+  const storeNames = menuData.map(store => store.name);
+
+  // Filter orders theo search query và quán
+  const filteredOrders = orders?.filter((order) => {
+    // Filter theo search query
+    const matchesSearch = 
       order.customer_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.selected_product.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (order.number && order.number.toString().includes(searchQuery))
-  );
+      (order.number && order.number.toString().includes(searchQuery));
+
+    // Filter theo quán
+    const matchesStore = 
+      selectedStore === "all" || 
+      order.selected_product.toLowerCase().includes(selectedStore.toLowerCase());
+
+    return matchesSearch && matchesStore;
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50">
@@ -183,16 +197,31 @@ const Orders = () => {
             </div>
           </div>
 
-          {/* Search Bar */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <Input
-              type="text"
-              placeholder="Tìm theo tên, sản phẩm hoặc số may mắn..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
+          {/* Search Bar and Store Filter */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input
+                type="text"
+                placeholder="Tìm theo tên, sản phẩm hoặc số may mắn..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+            <Select value={selectedStore} onValueChange={setSelectedStore}>
+              <SelectTrigger>
+                <SelectValue placeholder="Lọc theo quán" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tất cả các quán</SelectItem>
+                {storeNames.map((storeName) => (
+                  <SelectItem key={storeName} value={storeName}>
+                    {storeName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>
@@ -200,7 +229,7 @@ const Orders = () => {
       {/* Content */}
       <div className="container mx-auto px-4 py-6">
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <Card>
             <CardHeader className="pb-3">
               <CardDescription>Tổng đơn hàng</CardDescription>
@@ -221,9 +250,19 @@ const Orders = () => {
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription>Kết quả tìm kiếm</CardDescription>
+              <CardDescription>
+                {selectedStore !== "all" ? selectedStore : "Kết quả"}
+              </CardDescription>
               <CardTitle className="text-3xl">
                 {filteredOrders?.length || 0}
+              </CardTitle>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader className="pb-3">
+              <CardDescription>Số may mắn đã dùng</CardDescription>
+              <CardTitle className="text-3xl">
+                {orders?.filter(order => order.number !== null).length || 0} / 8
               </CardTitle>
             </CardHeader>
           </Card>
